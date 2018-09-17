@@ -1,0 +1,110 @@
+﻿'dewiacja.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'dewiacja.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\dewiacja.exe'. Symbols loaded.
+'dewiacja.exe' (CLR v4.0.30319: dewiacja.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'dewiacja.exe' (CLR v4.0.30319: dewiacja.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'dewiacja.exe' (CLR v4.0.30319: dewiacja.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'dewiacja.exe' (CLR v4.0.30319: dewiacja.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'dewiacja.exe' (CLR v4.0.30319: dewiacja.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'dewiacja.exe' (CLR v4.0.30319: dewiacja.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+-9.81545421286274
+-8.33895558414001
+7.17349735888349
+4.97011075493419
+-7.34854182104978
+-6.94238638362958
+-0.68794966241715
+-2.36997624503913
+7.80924962731509
+-9.94151371528465
+-7.02101278911392
+-2.16194663763137
+4.1628613295792
+5.2103662375409
+-9.37464565009561
+0.3305588431333
+-4.29752345862683
+-8.47676914114355
+-9.05895519957829
+6.1399606876727
+-5.6807222849134
+4.10055746049646
+-1.93076143596823
+9.69254568204868
+2.615278192151
+-5.01942451811369
+-1.46787593675213
+9.40913100699388
+-0.735165453858285
+4.07421700380473
+-4.6348170538595
+2.62977578334034
+-1.35840939886794
+9.21323322654387
+6.81083852276711
+9.76305214677148
+7.6174307882867
+6.159258734509
+-1.33844910717497
+4.68585571026702
+-4.82307754215928
+-1.4642510709652
+-9.66774971208896
+-5.86941107915221
+-7.19200731124357
+3.93311992936447
+3.9466528286909
+-8.60590819204501
+0.501016299473596
+0.580945252711393
+3.94686232039093
+-5.08498118961462
+-3.27885385289735
+-7.69670564574036
+1.46821204175624
+-3.76021420292566
+2.0798914283886
+-3.26476307272202
+9.12703676108599
+-1.89315642784031
+1.71991728791963
+6.64985806525213
+4.16450269248546
+-7.20324739683571
+-4.97899861772498
+-2.02976810374752
+5.68748031542053
+9.48166127292517
+-1.71898594671813
+9.00319350836947
+-3.32670483427434
+8.07185035109141
+3.58885079323726
+-2.18471806132454
+1.44354331839995
+1.63255234790619
+-1.69268874064679
+-9.0196640505547
+6.50630232715341
+-8.5767875325758
+9.93193999860992
+6.11555663687901
+4.16039602559078
+3.77600210428983
+3.26736679918476
+-5.36620610177806
+-9.82595258384289
+-4.78507664743116
+-2.78321337550097
+2.53279795522466
+8.73523346089536
+-6.93122273168118
+6.93954863443019
+-7.00610113190771
+8.45827602709563
+-1.75481260370222
+6.86456957685974
+-7.1791217183597
+0.501279528486208
+5.0050352676795
+The program '[3472] dewiacja.exe: Program Trace' has exited with code 0 (0x0).
+The program '[3472] dewiacja.exe' has exited with code 0 (0x0).
