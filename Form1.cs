@@ -84,7 +84,7 @@ namespace dewiacja
 
             double[] uniform_table_of_Sample = uniform_distribution(-1,1,number_of_sample);
             double[] geometric_table_of_Sample = geometric_distribution(0.1, number_of_sample);
-            double[] normal_table_of_Sample = normal_distribution(100, 10, number_of_sample);
+            double[] normal_table_of_Sample = normal_distribution(1, 1, number_of_sample);
             double[] exponential_table_of_Sample = exponential_distribution(0.1, number_of_sample);
 
 
@@ -102,16 +102,16 @@ namespace dewiacja
 
 
             LineItem uniformCurve = myPane.AddCurve("Uniform Distribution",
-                uniformPairList, Color.Red, SymbolType.Diamond);
+                uniformPairList, Color.Red, SymbolType.Circle);
 
             LineItem geometricCurve = myPane.AddCurve("Geometric Distribution",
-                geometricPairList, Color.Blue, SymbolType.Diamond);
+                geometricPairList, Color.Blue, SymbolType.Circle);
 
             LineItem normalCurve = myPane.AddCurve("Normal Distribution",
-                normalPairList, Color.Black, SymbolType.Diamond);
+                normalPairList, Color.Black, SymbolType.Circle);
 
             LineItem exponentialCurve = myPane.AddCurve("Exponential Distribution",
-                exponentialPairList, Color.Green, SymbolType.Diamond);
+                exponentialPairList, Color.Green, SymbolType.Circle);
  
             zedGraphControl1.AxisChange();
         }
