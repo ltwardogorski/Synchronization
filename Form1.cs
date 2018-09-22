@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZedGraph;
+using AwokeKnowing.GnuplotCSharp;
+using System.Threading;
 
 namespace dewiacja
 {
@@ -30,6 +32,9 @@ namespace dewiacja
         uint number_of_sample = 1;
         long move = 0;
         uint size = 3;
+        uint segments = 1;
+        uint tau_max = 100;
+        uint N = 3;
 
         double[] uniform_table_of_Sample;
 
@@ -50,6 +55,7 @@ namespace dewiacja
 
             InitializeComponent();
             generate_table_sample(number_of_sample);
+       //     plot_3D();
         }
 
         private void zedGraphControl1_Load(object sender, EventArgs e)
@@ -364,6 +370,24 @@ namespace dewiacja
             number_of_sample = (uint)numericUpDown1.Value;
         }
 
+        // segments
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            segments = (uint) numericUpDown2.Value;
+        }
+   
+        // tau_max
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            tau_max = (uint) numericUpDown3.Value;
+        }
+
+        // N
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            N = (uint)numericUpDown4.Value;
+        }
+
         // one sample left "<"
         private void button2_Click(object sender, EventArgs e)
         {
@@ -462,10 +486,10 @@ namespace dewiacja
         }
 
         // calculation
-        private double AllanDeviation(double[] data, int tau_zero)
+        private double AllanDeviation(double[] data, int tau_maximum)
         {
+            int tau_zero = tau_maximum / 10;
             int sampling_interval = tau_zero;
-            int observation = 2 * tau_zero;
 
             int j = 0;
             int sampling_momentum = 0;
@@ -503,9 +527,9 @@ namespace dewiacja
 
             }
 
-            while (j < observation)
+            while (false)
             {
-                
+
 
 
             }
@@ -568,6 +592,28 @@ namespace dewiacja
 
 
 
+        /*
+
+             private void plot_3D()
+             {
+
+                 double[,] Z = new double[,]
+                 {
+                     {0, 0, 0, 1, 2, 2, 1, 0, 0, 0},
+                     {0, 0, 2, 3, 3, 3, 3, 2, 0, 0},
+                     {0, 2, 3, 4, 4, 4, 4, 3, 2, 0},
+                     {2, 3, 4, 5, 5, 5, 5, 4, 3, 2},
+                     {3, 4, 5, 6, 7, 7, 6, 5, 4, 3},
+                     {3, 4, 5, 6, 7, 7, 6, 5, 4, 3},
+                     {2, 3, 4, 5, 5, 5, 5, 4, 3, 2},
+                     {0, 2, 3, 4, 4, 4, 4, 3, 2, 0},
+                     {0, 0, 2, 3, 3, 3, 3, 2, 0, 0},
+                     {0, 0, 0, 1, 2, 2, 1, 0, 0, 0}
+                 };
+                 GnuPlot.HeatMap(Z);
+
+               //  Console.ReadKey();
+             }*/
     }
 }
 

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZedGraph;
+using System.Text;
+using AwokeKnowing.GnuplotCSharp;
+using System.Threading;
 
 namespace dewiacja
 {
@@ -18,6 +21,7 @@ namespace dewiacja
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
         }
     }
 }
