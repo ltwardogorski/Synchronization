@@ -367,6 +367,7 @@ namespace dewiacja
         // one sample left "<"
         private void button2_Click(object sender, EventArgs e)
         {
+            if(move>0)
             move--;
             zedGraphControl1.GraphPane.CurveList.Clear();
             switch (choice_2D_plot)
@@ -399,7 +400,7 @@ namespace dewiacja
         // stop/auto "||"
         private void button3_Click(object sender, EventArgs e)
         {
-            move=number_of_sample-size;
+            move=number_of_sample-(size*2+1);
             zedGraphControl1.GraphPane.CurveList.Clear();
             switch (choice_2D_plot)
             {
@@ -431,6 +432,7 @@ namespace dewiacja
         // one sample right ">"
         private void button4_Click(object sender, EventArgs e)
         {
+            if(move<(number_of_sample- (size * 2 + 1)))
             move++;
             zedGraphControl1.GraphPane.CurveList.Clear();
             switch (choice_2D_plot)
@@ -458,5 +460,115 @@ namespace dewiacja
             plotGraph2D_operator(size, move);
             zedGraphRefresh1();
         }
+
+        // calculation
+        private double AllanDeviation(double[] data, int tau_zero)
+        {
+            int sampling_interval = tau_zero;
+            int observation = 2 * tau_zero;
+
+            int j = 0;
+            int sampling_momentum = 0;
+
+            double[] temp_tab;
+
+            switch (choice_2D_plot)
+            {
+                case plot_2D.Uniform:
+                {
+                    temp_tab = uniform_table_of_Sample;
+                    break;
+                }
+
+                case plot_2D.Geomtric:
+                {
+                    temp_tab = geometric_table_of_Sample;
+                    break;
+                }
+
+                case plot_2D.Normal:
+                {
+                    temp_tab = normal_table_of_Sample;
+                    break;
+                }
+
+                case plot_2D.Exponential:
+                {
+                    temp_tab = exponential_table_of_Sample;
+                    break;
+                }
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+
+            }
+
+            while (j < observation)
+            {
+                
+
+
+            }
+
+            return 0;
+        }
+
+        // calculation
+        private double TimeDeviation(double[] data, int tau_zero)
+        {
+            int sampling_interval = tau_zero;
+            int observation = 2 * tau_zero;
+
+            int j = 0;
+            int sampling_momentum = 0;
+
+            double[] temp_tab;
+
+            switch (choice_2D_plot)
+            {
+                case plot_2D.Uniform:
+                {
+                    temp_tab = uniform_table_of_Sample;
+                    break;
+                }
+
+                case plot_2D.Geomtric:
+                {
+                    temp_tab = geometric_table_of_Sample;
+                    break;
+                }
+
+                case plot_2D.Normal:
+                {
+                    temp_tab = normal_table_of_Sample;
+                    break;
+                }
+
+                case plot_2D.Exponential:
+                {
+                    temp_tab = exponential_table_of_Sample;
+                    break;
+                }
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+
+            }
+
+            while (j < observation)
+            {
+
+
+
+            }
+
+            return 0;
+        }
+
+
+
+
     }
 }
+
+
