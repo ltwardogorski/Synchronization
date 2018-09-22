@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,11 +13,22 @@ using ZedGraph;
 
 namespace dewiacja
 {
+
     public partial class Form1 : Form
     {
-       // private PointPairList _uniform_sample_noise;
 
-        //sample ZedGraph
+        public enum plot_2D : int
+        {
+            Uniform,
+            Geomtric,
+            Normal,
+            Exponential
+        }
+
+        private plot_2D choice_2D_plot=plot_2D.Uniform;
+
+        uint number_of_sample = 0;
+
         public Form1()
         {
             // uniform_distribution(-10, 10, 100);     // wywołanie generatora o rozkładzie równomiernym i zapis do [table_of_sample]
@@ -27,93 +39,11 @@ namespace dewiacja
             // print_test(uniform_distribution(-10, 10, 100));
 
             InitializeComponent();
-   
-            plotGraph();
-
         }
 
         private void zedGraphControl1_Load(object sender, EventArgs e)
         {
-            plotGraph();
             SetSize();
-        }
-
-
-        private int[] buildTeamAData()
-        {
-            int[] goalsScored = new int[10];
-            for (int i = 0; i < 10; i++)
-            {
-                goalsScored[i] = (i + 1) / 10;
-            }
-
-            return goalsScored;
-        }
-
-        private int[] buildTeamBData()
-        {
-            int[] goalsScored = new int[10];
-            for (int i = 0; i < 10; i++)
-            {
-                goalsScored[i] = (i + 10) * 11;
-            }
-
-            return goalsScored;
-        }
-
-        private void plotGraph()
-        {
-            
-            GraphPane myPane = zedGraphControl1.GraphPane;
-            myPane.CurveList.Clear();
-
-            uint number_of_sample = 500;
-
-            // Set the Titles
-            myPane.Title.Text = "Time Error [ms]";
-            myPane.XAxis.Title.Text = "Number of Sample";
-            myPane.YAxis.Title.Text = "Value [ms]";
-            /* myPane.XAxis.Scale.MajorStep = 50;
-             myPane.YAxis.Scale.Mag = 0;
-             myPane.XAxis.Scale.Max = 1000;*/
-
-            PointPairList uniformPairList = new PointPairList();
-            PointPairList geometricPairList = new PointPairList();
-            PointPairList normalPairList = new PointPairList();
-            PointPairList exponentialPairList = new PointPairList();
-
-            double[] uniform_table_of_Sample = uniform_distribution(-1,1,number_of_sample);
-            double[] geometric_table_of_Sample = geometric_distribution(0.1, number_of_sample);
-            double[] normal_table_of_Sample = normal_distribution(1, 1, number_of_sample);
-            double[] exponential_table_of_Sample = exponential_distribution(0.1, number_of_sample);
-
-
-            for (int i = 0; i < uniform_table_of_Sample.Length; i++)
-                uniformPairList.Add(i, uniform_table_of_Sample[i]);
-
-            for (int i = 0; i < uniform_table_of_Sample.Length; i++)
-                geometricPairList.Add(i, geometric_table_of_Sample[i]);
-
-            for (int i = 0; i < uniform_table_of_Sample.Length; i++)
-                normalPairList.Add(i, normal_table_of_Sample[i]);
-
-            for (int i = 0; i < uniform_table_of_Sample.Length; i++)
-                exponentialPairList.Add(i, exponential_table_of_Sample[i]);
-
-
-            LineItem uniformCurve = myPane.AddCurve("Uniform Distribution",
-                uniformPairList, Color.Red, SymbolType.Circle);
-
-            LineItem geometricCurve = myPane.AddCurve("Geometric Distribution",
-                geometricPairList, Color.Blue, SymbolType.Circle);
-
-            LineItem normalCurve = myPane.AddCurve("Normal Distribution",
-                normalPairList, Color.Black, SymbolType.Circle);
-
-            LineItem exponentialCurve = myPane.AddCurve("Exponential Distribution",
-                exponentialPairList, Color.Green, SymbolType.Circle);
- 
-            zedGraphControl1.AxisChange();
         }
 
         private void SetSize()
@@ -127,6 +57,106 @@ namespace dewiacja
         private void Form1_Resize(object sender, EventArgs e)
         {
             SetSize();
+        }
+
+        private void zedGraphRefresh()
+        {
+            zedGraphControl1.AxisChange();
+            Refresh();
+        }
+
+        private void plotGraph2D_Uniform(uint number_of_sample)
+        {
+            
+            GraphPane myPane = zedGraphControl1.GraphPane;
+            myPane.CurveList.Clear();
+
+            // Set the Titles
+            myPane.Title.Text = "Time Error [ms]";
+            myPane.XAxis.Title.Text = "Number of Sample";
+            myPane.YAxis.Title.Text = "Value [ms]";
+
+            PointPairList uniformPairList = new PointPairList();
+
+            double[] uniform_table_of_Sample = uniform_distribution(-1,1,number_of_sample);
+
+
+            for (int i = 0; i < uniform_table_of_Sample.Length; i++)
+                uniformPairList.Add(i, uniform_table_of_Sample[i]);
+
+            LineItem uniformCurve = myPane.AddCurve("Uniform Distribution",
+                uniformPairList, Color.Red, SymbolType.Circle);
+        }
+
+        private void plotGraph2D_Geometric(uint number_of_sample)
+        {
+
+            GraphPane myPane = zedGraphControl1.GraphPane;
+            myPane.CurveList.Clear();
+
+            // Set the Titles
+            myPane.Title.Text = "Time Error [ms]";
+            myPane.XAxis.Title.Text = "Number of Sample";
+            myPane.YAxis.Title.Text = "Value [ms]";
+
+            PointPairList geometricPairList = new PointPairList();
+
+            double[] geometric_table_of_Sample = geometric_distribution(0.1, number_of_sample);
+
+
+            for (int i = 0; i < geometric_table_of_Sample.Length; i++)
+                geometricPairList.Add(i, geometric_table_of_Sample[i]);
+
+
+            LineItem geometricCurve = myPane.AddCurve("Geometric Distribution",
+                geometricPairList, Color.Blue, SymbolType.Circle);
+        }
+
+        private void plotGraph2D_Normal(uint number_of_sample)
+        {
+
+            GraphPane myPane = zedGraphControl1.GraphPane;
+            myPane.CurveList.Clear();
+
+            // Set the Titles
+            myPane.Title.Text = "Time Error [ms]";
+            myPane.XAxis.Title.Text = "Number of Sample";
+            myPane.YAxis.Title.Text = "Value [ms]";
+
+            PointPairList normalPairList = new PointPairList();
+
+            double[] normal_table_of_Sample = normal_distribution(1, 1, number_of_sample);
+
+            for (int i = 0; i < normal_table_of_Sample.Length; i++)
+                normalPairList.Add(i, normal_table_of_Sample[i]);
+
+
+            LineItem normalCurve = myPane.AddCurve("Normal Distribution",
+                normalPairList, Color.Black, SymbolType.Circle);
+        }
+
+        private void plotGraph2D_Exponential(uint number_of_sample)
+        {
+
+            GraphPane myPane = zedGraphControl1.GraphPane;
+            myPane.CurveList.Clear();
+
+            // Set the Titles
+            myPane.Title.Text = "Time Error [ms]";
+            myPane.XAxis.Title.Text = "Number of Sample";
+            myPane.YAxis.Title.Text = "Value [ms]";
+
+            PointPairList exponentialPairList = new PointPairList();
+
+
+            double[] exponential_table_of_Sample = exponential_distribution(0.1, number_of_sample);
+
+
+            for (int i = 0; i < exponential_table_of_Sample.Length; i++)
+                exponentialPairList.Add(i, exponential_table_of_Sample[i]);
+
+            LineItem exponentialCurve = myPane.AddCurve("Exponential Distribution",
+                exponentialPairList, Color.Green, SymbolType.Circle);
         }
 
 
@@ -216,8 +246,9 @@ namespace dewiacja
 
             return tableOfSample;
         }
+/*
 
-        //drukownie wartosci probek zapisanych w tablicy
+        // drukownie wartosci probek zapisanych w tablicy
         public void print_test(double[] tableOfSample)
         {
             foreach (var t in tableOfSample)
@@ -225,7 +256,67 @@ namespace dewiacja
                 Console.WriteLine(t.ToString(CultureInfo.InvariantCulture));
             }
         }
+*/
 
+        // button generate
+        private void button1_Click(object sender, EventArgs e)
+        {
+            zedGraphControl1.GraphPane.CurveList.Clear();
+            zedGraphControl1.Refresh();
+            switch (choice_2D_plot)
+            {
+                case plot_2D.Uniform:
+                    plotGraph2D_Uniform(number_of_sample);
+                    break;
 
+                case plot_2D.Geomtric:
+                    plotGraph2D_Geometric(number_of_sample);
+                    break;
+                
+                case plot_2D.Normal:
+                    plotGraph2D_Normal(number_of_sample);
+                    break;
+
+                case plot_2D.Exponential:
+                    plotGraph2D_Exponential(number_of_sample);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+
+            }
+            zedGraphRefresh();
+
+        }
+
+        // button Uniform Distribution
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            choice_2D_plot = plot_2D.Uniform;
+        }
+
+        // button Geometric Distribution
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            choice_2D_plot = plot_2D.Geomtric;
+        }
+
+        // button Normal Distribution
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            choice_2D_plot = plot_2D.Normal;
+        }
+
+        // button Exponential Distribution
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            choice_2D_plot = plot_2D.Exponential;
+        }
+
+        // number of sample time error 2D
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            number_of_sample = (uint)numericUpDown1.Value;
+        }
     }
 }
