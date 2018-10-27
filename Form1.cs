@@ -29,18 +29,14 @@ namespace dewiacja
 
         uint number_of_sample = 100;
         long move = 0;
+        long move_tdev_in = 0;
+        long move_tdev_out = 0;
         uint size = 3;
         uint segments = 5;
         uint tau_max = 100;
         uint N = 3;
 
         double[] uniform_table_of_Sample;
-
-        double[] geometric_table_of_Sample;
-
-        double[] normal_table_of_Sample;
-
-        double[] exponential_table_of_Sample;
 
         public Form1()
         {
@@ -54,6 +50,7 @@ namespace dewiacja
             InitializeComponent();
             generate_table_sample(number_of_sample);
         }
+
 /*
         // drukownie wartosci probek zapisanych w tablicy
         public void print_test(double[] tableOfSample)
@@ -90,92 +87,618 @@ namespace dewiacja
         private void generate_table_sample(uint number_of_sample)
         {
             uniform_table_of_Sample = uniform_distribution(-1, 1, number_of_sample);
-            geometric_table_of_Sample = geometric_distribution(0.1, number_of_sample);
-            normal_table_of_Sample = normal_distribution(1, 1, number_of_sample);
-            exponential_table_of_Sample = exponential_distribution(0.1, number_of_sample);
         }
 
 
-        private void plotGraph2D_Uniform()
+        int number_of_clik_step = 0;
+        bool line_in_start = false;
+        bool new_segment = false;
+        int temp_sample = 0;
+
+        PointPairList uniformPairList = new PointPairList();
+        PointPairList segment = new PointPairList();
+
+
+        private void button1_Step()
+        {
+            plotGraph2D();
+            number_of_clik_step++;
+            temp_sample++;
+
+
+            if (temp_sample <= 10)
+                segment.Add(0, 0);
+
+            if (temp_sample <= 20 && temp_sample > 10)
+                segment.Add(10, 0);
+
+            if (temp_sample <= 30 && temp_sample > 20)
+                segment.Add(20, 0);
+
+            if (temp_sample <= 40 && temp_sample > 30)
+                segment.Add(30, 0);
+
+            if (temp_sample <= 50 && temp_sample > 40)
+                segment.Add(40, 0);
+
+            if (temp_sample <= 60 && temp_sample > 50)
+                segment.Add(50, 0);
+
+            if (temp_sample <= 70 && temp_sample > 60)
+                segment.Add(60, 0);
+
+            if (temp_sample <= 80 && temp_sample > 70)
+                segment.Add(70, 0);
+
+            if (temp_sample <= 90 && temp_sample > 80)
+                segment.Add(80, 0);
+
+            if (temp_sample < 100 && temp_sample >= 90)
+                segment.Add(90, 0);
+
+           zedGraphControl1.GraphPane.AddCurve("Segment Limit", segment, Color.Blue, SymbolType.Circle);
+        }
+
+  
+
+        private void plotGraph2D()
         {
             GraphPane myPane = zedGraphControl1.GraphPane;
-            myPane.CurveList.Clear();
+            //myPane.CurveList.Clear();
 
             // Set the Titles
             myPane.Title.Text = "Time Error [ns]";
             myPane.XAxis.Title.Text = "Number of Sample";
             myPane.YAxis.Title.Text = "Value [ns]";
 
-            PointPairList uniformPairList = new PointPairList();
+            ////////////////OPERATORY////////////////////////////////  ->kształty
+            PointPairList operator_ADEV_PairList = new PointPairList();
+            PointPairList operator_ADEV_PairList_n3 = new PointPairList();
+/*            PointPairList operator_ADEV_PairList_n4 = new PointPairList();
+            PointPairList operator_ADEV_PairList_n5 = new PointPairList();*/
 
-            for (int i = 0; i < uniform_table_of_Sample.Length; i++)
-                uniformPairList.Add(i, uniform_table_of_Sample[i]);
 
-            LineItem uniformCurve = myPane.AddCurve("Uniform Distribution",
-                uniformPairList, Color.Red, SymbolType.None);
+            PointPairList operator_TDEV_internal_PairList = new PointPairList();
+            PointPairList operator_TDEV_internal_PairList_n3 = new PointPairList();
+            /*PointPairList operator_TDEV_internal_PairList_n4 = new PointPairList();
+            PointPairList operator_TDEV_internal_PairList_n5 = new PointPairList();*/
+
+
+            PointPairList operator_TDEV_external_PairList = new PointPairList();
+/*            PointPairList operator_TDEV_external_PairList_n3 = new PointPairList();*/
+
+
+            double[] operator_ADEV = {-1.5, -2, -1.5, -2, -1.5}; //n=2;
+            double[] operator_ADEV_n3 = {-1.5, -2, -2, -1.5, -2, -2, -1.5}; //n=3
+            /*double[] operator_ADEV_n4 = {-1.5, -2, -2, -2, -1.5, -2, -2, -2, -1.5}; //n=4
+            double[] operator_ADEV_n5 = {-1.5, -2, -2, -2, -2, -1.5, -2, -2, -2, -2, -1.5}; //n=5*/
+
+
+            double[] operator_TDEV_internal = {-2.5, -3, -2.5, -3, -2.5}; //n=2
+            double[] operator_TDEV_internal_n3 = {-2.5, -3, -3, -2.5, -3, -3, -2.5}; //n=3
+/*
+            double[] operator_TDEV_internal_n4 = {-2.5, -3, -3, -3, -2.5, -3, -3, -3, -2.5}; //n=4
+            double[] operator_TDEV_internal_n5 = {-2.5, -3, -3, -3, -3, -2.5, -3, -3, -3, -3, -2.5}; //n=5
+*/
+
+
+            double[] operator_TDEV_external = {-3.5, -4, -3.5,  -4, -3.5,  -4, -3.5};
+//           double[] operator_TDEV_external_n3 = {-3.5, -4, -4, -4, -3.5, -4, -4, -4, -3.5, -4, -4, -4, -3.5};
+            ////////////////OPERATORY////////////////////////////////  ->kształty
+
+
+            for (int i = 0; i < operator_ADEV.Length; i++)
+            {
+                operator_ADEV_PairList.Add(i + move, operator_ADEV[i]);
+                operator_TDEV_internal_PairList.Add(i + move_tdev_in, operator_TDEV_internal[i]);
+            }
+
+            for (var i = 0; i < operator_ADEV_n3.Length; i++)
+            {
+                operator_ADEV_PairList_n3.Add(i + move, operator_ADEV_n3[i]);
+                operator_TDEV_internal_PairList_n3.Add(i + move_tdev_in, operator_TDEV_internal_n3[i]);
+            }
+/*
+
+            for (var i = 0; i < operator_ADEV_n4.Length; i++)
+            {
+                operator_ADEV_PairList_n4.Add(i + move, operator_ADEV_n4[i]);
+                operator_TDEV_internal_PairList_n4.Add(i + move, operator_TDEV_internal_n4[i]);
+            }*/
+
+/*            for (var i = 0; i < operator_ADEV_n5.Length; i++)
+            {
+                operator_ADEV_PairList_n5.Add(i + move, operator_ADEV_n5[i]);
+                operator_TDEV_internal_PairList_n5.Add(i + move, operator_TDEV_internal_n5[i]);
+            }*/
+
+            for (var i = 0; i < operator_TDEV_external.Length; i++)
+            {
+                operator_TDEV_external_PairList.Add(i + move_tdev_out, operator_TDEV_external[i]);
+            }
+
+/*            for (var i = 0; i < operator_TDEV_external_n3.Length; i++)
+            {
+                operator_TDEV_external_PairList_n3.Add(i + move, operator_TDEV_external_n3[i]);
+            }*/
+            ////////////////////////OPERATOR////////////////////////////////////////
+
+            if (number_of_clik_step < uniform_table_of_Sample.Length)
+            {
+                if (line_in_start == false)
+                {
+                    uniformPairList.Add(temp_sample,
+                        uniform_table_of_Sample[temp_sample]); //drukowanie wykresu po step
+                }
+                else
+                {
+                    temp_sample--;
+                }
+
+
+                LineItem uniformCurve = myPane.AddCurve("Uniform Distribution",
+                    uniformPairList, Color.Red, SymbolType.None);
+
+
+                if (number_of_clik_step < 4)
+                {
+                    LineItem operatorCurve_ADEV =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                }
+
+                if (number_of_clik_step >= 4)
+                {
+                    LineItem operatorCurve_ADEV =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move++;
+                }
+
+
+
+
+                if (number_of_clik_step < 4)
+                {
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                }
+
+                if (number_of_clik_step >= 4)
+                {
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in++;
+                }
+
+
+
+
+                if (number_of_clik_step < 6)
+                {
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                }
+
+                if (number_of_clik_step >= 6)
+                {
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                  
+                }
+
+
+
+
+                if (number_of_clik_step == 6)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move=move-3;
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in=move_tdev_in-3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                  
+
+                }
+
+
+                if (number_of_clik_step == 7)
+                {
+                    line_in_start = false;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList_n3, Color.Gold, SymbolType.None);
+                    move=move+2;
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList_n3, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in + 2;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                    move_tdev_out++;
+                }
+
+
+
+
+                if (number_of_clik_step == 8)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in - 3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+  
+                }
+
+
+                if (number_of_clik_step == 9)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                }
+
+
+                if (number_of_clik_step == 10)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                }
+
+
+                if (number_of_clik_step == 11)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move = move - 3;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in - 3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+
+
+                if (number_of_clik_step == 12)
+                {
+                    line_in_start = false;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+               
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList_n3, Color.Gold, SymbolType.None);
+                    move = move + 2;
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList_n3, Color.Black, SymbolType.None);
+                    move_tdev_in=move_tdev_in+2;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                    move_tdev_out++;
+                }
+
+
+                if (number_of_clik_step == 13)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in - 3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+
+                if (number_of_clik_step == 14)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                }
+
+                if (number_of_clik_step == 15)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+
+                if (number_of_clik_step == 16)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move = move - 3;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in - 3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                }
+
+
+                if (number_of_clik_step == 17)
+                {
+                    line_in_start = false;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList_n3, Color.Gold, SymbolType.None);
+                    move = move + 2;
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList_n3, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in + 2;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                    move_tdev_out++;
+                }
+
+
+                if (number_of_clik_step == 18)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in - 3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+
+                if (number_of_clik_step == 19)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+                if (number_of_clik_step == 20)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+
+                if (number_of_clik_step == 21)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move = move - 3;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in - 3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+                if (number_of_clik_step == 22)
+                {
+                    line_in_start = false;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList_n3, Color.Gold, SymbolType.None);
+                    move = move + 2;
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList_n3, Color.Black, SymbolType.None);
+
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                    move_tdev_out++;
+                }
+                
+                if (number_of_clik_step == 23)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+                if (number_of_clik_step == 24)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move--;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+                }
+
+
+                if (number_of_clik_step == 25)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList, Color.Gold, SymbolType.None);
+                    move = move - 3;
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList, Color.Black, SymbolType.None);
+                    move_tdev_in = move_tdev_in - 3;
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+                }
+
+
+
+
+                if (number_of_clik_step == 26)
+                {
+                    line_in_start = true;
+                    zedGraphControl1.GraphPane.CurveList.Clear();
+                    LineItem uni_2 = myPane.AddCurve("Uniform Distribution", uniformPairList, Color.Red,
+                        SymbolType.None);
+                    LineItem operatorCurve_ADEV_n3 =
+                        myPane.AddCurve("ADEV", operator_ADEV_PairList_n3, Color.Gold, SymbolType.None);
+
+                    LineItem operatorCurve_TDEV_IN =
+                        myPane.AddCurve("TDEV IN", operator_TDEV_internal_PairList_n3, Color.Black, SymbolType.None);
+    
+
+                    LineItem operatorCurve_TDEV_EX =
+                        myPane.AddCurve("TDEV EX", operator_TDEV_external_PairList, Color.Green, SymbolType.None);
+
+
+                    number_of_clik_step = 0;
+                    new_segment = true;
+                }
+
+                if (number_of_clik_step < 4 && new_segment)
+                {
+                    line_in_start = false;
+                    move = move + 5;
+                    move_tdev_in = move_tdev_in + 5;
+                    move_tdev_out = move_tdev_out + 6;
+                    new_segment = false;
+                }
+
+            }
         }
 
-        private void plotGraph2D_Geometric()
-        {
-            GraphPane myPane = zedGraphControl1.GraphPane;
-            myPane.CurveList.Clear();
-
-            // Set the Titles
-            myPane.Title.Text = "Time Error [ns]";
-            myPane.XAxis.Title.Text = "Number of Sample";
-            myPane.YAxis.Title.Text = "Value [ns]";
-
-            PointPairList geometricPairList = new PointPairList();
-
-
-            for (int i = 0; i < geometric_table_of_Sample.Length; i++)
-                geometricPairList.Add(i, geometric_table_of_Sample[i]);
-
-
-            LineItem geometricCurve = myPane.AddCurve("Geometric Distribution",
-                geometricPairList, Color.Blue, SymbolType.None);
-        }
-
-        private void plotGraph2D_Normal()
-        {
-            GraphPane myPane = zedGraphControl1.GraphPane;
-            myPane.CurveList.Clear();
-
-            // Set the Titles
-            myPane.Title.Text = "Time Error [ns]";
-            myPane.XAxis.Title.Text = "Number of Sample";
-            myPane.YAxis.Title.Text = "Value [ns]";
-
-            PointPairList normalPairList = new PointPairList();
-
-
-            for (int i = 0; i < normal_table_of_Sample.Length; i++)
-                normalPairList.Add(i, normal_table_of_Sample[i]);
-
-
-            LineItem normalCurve = myPane.AddCurve("Normal Distribution",
-                normalPairList, Color.Black, SymbolType.None);
-        }
-
-        private void plotGraph2D_Exponential()
-        {
-            GraphPane myPane = zedGraphControl1.GraphPane;
-            myPane.CurveList.Clear();
-
-            // Set the Titles
-            myPane.Title.Text = "Time Error [ns]";
-            myPane.XAxis.Title.Text = "Number of Sample";
-            myPane.YAxis.Title.Text = "Value [ns]";
-
-            PointPairList exponentialPairList = new PointPairList();
-
-
-            for (int i = 0; i < exponential_table_of_Sample.Length; i++)
-                exponentialPairList.Add(i, exponential_table_of_Sample[i]);
-
-            LineItem exponentialCurve = myPane.AddCurve("Exponential Distribution",
-                exponentialPairList, Color.Green, SymbolType.None);
-        }
 
         private void plotGraph2D_operator(uint size, long move)
         {
@@ -184,7 +707,6 @@ namespace dewiacja
             PointPairList operator_ADEV_PairList = new PointPairList();
             PointPairList operator_TDEV_internal_PairList = new PointPairList();
             PointPairList operator_TDEV_external_PairList = new PointPairList();
-
 
             double[] operator_ADEV = {-1.5, -2, -2, -1.5, -2, -2, -1.5};
             double[] operator_TDEV_internal = {-2.5, -3, -3, -2.5, -3, -3, -2.5};
@@ -234,68 +756,6 @@ namespace dewiacja
             return tableOfSample;
         }
 
-        //generator próbek o rozkładzie geometrycznym (p (average [0, 1]), number_of_sample)
-        public double[] geometric_distribution(double p, ulong numberOfSample)
-        {
-            var tableOfSample = new double[numberOfSample];
-            for (var i = 0; i < tableOfSample.Length; i++)
-            {
-                double kernel = 1;
-
-                while (true)
-                {
-                    if (make_grain() > p)
-                    {
-                        kernel++;
-                        continue;
-                    }
-
-                    break;
-                }
-
-                tableOfSample[i] = kernel;
-            }
-
-            return tableOfSample;
-        }
-
-        //generator próbek o rozkładzie normalnym(e (average), ew (variance), number_of_sample)
-        public double[] normal_distribution(double e, double ew, ulong numberOfSample)
-        {
-            var tableOfSample = new double[numberOfSample];
-            for (var i = 0; i < tableOfSample.Length; i++)
-            {
-                double kernel = 1;
-                double temp = 0;
-                for (var j = 0; j < 12; j++)
-                {
-                    temp += make_grain();
-                }
-
-                temp -= 6.0;
-                kernel = temp * ew + e;
-
-                tableOfSample[i] = kernel;
-            }
-
-            return tableOfSample;
-        }
-
-        //generator próbek o rozkładzie wykładniczym(lambda [0,1])
-        public double[] exponential_distribution(double lambda, ulong numberOfSample)
-        {
-            var tableOfSample = new double[numberOfSample];
-            for (var i = 0; i < tableOfSample.Length; i++)
-            {
-                double kernel = 1;
-                kernel = -1 / lambda * Math.Log(make_grain());
-
-                tableOfSample[i] = kernel;
-            }
-
-            return tableOfSample;
-        }
-
 
         // button generate
         private void button1_Click(object sender, EventArgs e)
@@ -306,20 +766,9 @@ namespace dewiacja
             switch (choice_2D_plot)
             {
                 case plot_2D.Uniform:
-                    plotGraph2D_Uniform();
+                    button1_Step();
                     break;
 
-                case plot_2D.Geomtric:
-                    plotGraph2D_Geometric();
-                    break;
-
-                case plot_2D.Normal:
-                    plotGraph2D_Normal();
-                    break;
-
-                case plot_2D.Exponential:
-                    plotGraph2D_Exponential();
-                    break;
 
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -364,309 +813,599 @@ namespace dewiacja
             segments = (uint) numericUpDown2.Value;
         }
 
-        // tau_max
-        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
-        {
-            tau_max = (uint) numericUpDown3.Value;
-        }
 
-        // N
-        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
-        {
-            N = (uint) numericUpDown4.Value;
-        }
-
-        // one sample left "<"
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (move > 0)
-                move--;
-            zedGraphControl1.GraphPane.CurveList.Clear();
-            switch (choice_2D_plot)
-            {
-                case plot_2D.Uniform:
-                    plotGraph2D_Uniform();
-                    break;
-
-                case plot_2D.Geomtric:
-                    plotGraph2D_Geometric();
-                    break;
-
-                case plot_2D.Normal:
-                    plotGraph2D_Normal();
-                    break;
-
-                case plot_2D.Exponential:
-                    plotGraph2D_Exponential();
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            plotGraph2D_operator(size, move);
-            zedGraphRefresh1();
-        }
-
-        // stop/auto "||"
-        private void button3_Click(object sender, EventArgs e)
-        {
-            move = number_of_sample - (size * 2 + 1);
-            zedGraphControl1.GraphPane.CurveList.Clear();
-            switch (choice_2D_plot)
-            {
-                case plot_2D.Uniform:
-                    plotGraph2D_Uniform();
-                    break;
-
-                case plot_2D.Geomtric:
-                    plotGraph2D_Geometric();
-                    break;
-
-                case plot_2D.Normal:
-                    plotGraph2D_Normal();
-                    break;
-
-                case plot_2D.Exponential:
-                    plotGraph2D_Exponential();
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            plotGraph2D_operator(size, move);
-            zedGraphRefresh1();
-            Refresh();
-        }
-
-        // one sample right ">"
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (move < (number_of_sample - (size * 2 + 1)))
-                move++;
-            zedGraphControl1.GraphPane.CurveList.Clear();
-            switch (choice_2D_plot)
-            {
-                case plot_2D.Uniform:
-                    plotGraph2D_Uniform();
-                    break;
-
-                case plot_2D.Geomtric:
-                    plotGraph2D_Geometric();
-                    break;
-
-                case plot_2D.Normal:
-                    plotGraph2D_Normal();
-                    break;
-
-                case plot_2D.Exponential:
-                    plotGraph2D_Exponential();
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            plotGraph2D_operator(size, move);
-            zedGraphRefresh1();
-        }
-
-        // calculation
-        private double AllanDeviation(double[] data, int tau_maximum,
-            double[] samples_tab, int sampling_interval, int sampletab_size)
+        private double plot3D_A(int tau_maximum, double[] samples_tab,
+            int sampling_interval, int segments_num)
         {
             int tau_zero = tau_maximum / 10;
-         //   int sampling_interval = tau_zero;
-
-            int sampling_momentum = 0;
-
-            double[] temp_tab;
+            //   int sampling_interval = tau_zero;
+            int observe = tau_maximum / segments_num;
 
             switch (choice_2D_plot)
             {
                 case plot_2D.Uniform:
                 {
-                    temp_tab = uniform_table_of_Sample;
+                    samples_tab = uniform_table_of_Sample;
                     break;
                 }
 
-                case plot_2D.Geomtric:
-                {
-                    temp_tab = geometric_table_of_Sample;
-                    break;
-                }
-
-                case plot_2D.Normal:
-                {
-                    temp_tab = normal_table_of_Sample;
-                    break;
-                }
-
-                case plot_2D.Exponential:
-                {
-                    temp_tab = exponential_table_of_Sample;
-                    break;
-                }
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
 
 
             //////////////////
-           double[] tab = samples_tab;                         //tablica próbek błędu czasu
-            int number_of_elements = sampletab_size;            //liczba próbek
-            int gap = sampling_interval;                        //odstęp próbkowania tau
+            int number_of_elements = samples_tab.Length; //liczba próbek
+            int gap = sampling_interval; //odstęp próbkowania tau
 
-            double[] a_dev = new double[sampletab_size];       //tablica do przechowywania wartości dewiacji allana
-            double temp = 0;                                    //do przechowywania sumy kwadratów drugich różnic
-            double[] square_sum = new double[sampletab_size];
+            double[] a_dev = new double[samples_tab.Length]; //tablica do przechowywania wartości dewiacji allana
+            double temp = 0; //do przechowywania sumy kwadratów drugich różnic
+            double[] square_sum = new double[samples_tab.Length];
             double fraction = 0;
-            int intervals = 2;                              //liczba przedziałów
 
-            bool is_active = false;                         //flaga o aktywności operatora
+            bool is_active = false; //flaga o aktywności operatora
 
-            int current = 0;                                  //aktualna próbka
+            int current = 0; //aktualna próbka
             double sum = 0;
+            double intervals = 2;
+            int k;
 
-
-          while (current <= number_of_elements)
+            while (current < number_of_elements)
             {
-                for (var j = 2 * gap + 1; j < current; j++)
+                gap = 1;
+
+                if (gap == 0)
                 {
+                    gap++;
+                }
 
-                    if (gap == 0)
-                    {
-                        gap++;
-                        continue;
-                    }
+                while (current < 2 * gap)
+                {
+                    a_dev[current] = 0;
+                    square_sum[current] = 0;
+                    current++;
+                }
 
-                    if (current <= 2 * gap)
-                    {
-                        current++;
-                        a_dev[current] = 0;
-                        square_sum[current] = 0;
-                        continue;
-                    }
+                k = 0;
 
-                    else
+                while (2 * gap <= current)
+                {
+                    while (k < current - 2 * gap)
                     {
-                        is_active = true;      //spełniony warunek aktywacji operatora
-                        sum = tab[j] - 2 * tab[j - gap] + tab[j - 2 * gap];
+                        is_active = true; //spełniony warunek aktywacji operatora
+                        sum = samples_tab[current] - 2 * samples_tab[current - gap] + samples_tab[current - 2 * gap];
                         temp += Math.Pow(sum, 2);
                         square_sum[current] = temp;
+
+                        fraction = 1 / (2 * Math.Pow(intervals, 2) * Math.Pow(gap, 2) *
+                                        (current - 2 * gap)); //ułamek ze wzoru
+
+                        a_dev[current] = Math.Sqrt(fraction * (square_sum[current - 1] +
+                                                               Math.Pow(
+                                                                   samples_tab[current] -
+                                                                   2 * samples_tab[current - gap] +
+                                                                   samples_tab[current - 2 * gap], 2)));
+
+                        k++;
+                    }
+
+                    gap++;
+                }
+
+                current++;
+            }
+
+            double[] x_axis = new double[10];
+
+            double[] tab_1 = new double[10];
+            double[] tab_2 = new double[10];
+            double[] tab_3 = new double[10];
+            double[] tab_4 = new double[10];
+            double[] tab_5 = new double[10];
+            double[] tab_6 = new double[10];
+            double[] tab_7 = new double[10];
+            double[] tab_8 = new double[10];
+            double[] tab_9 = new double[10];
+            double[] tab_10 = new double[10];
+
+            int l = 0;
+            while (l < a_dev.Length)
+            {
+                while (l < 10)
+                {
+                    tab_1[l] = a_dev[l] + l - 1;
+                    l++;
+                }
+
+                while (l >= 10 && l < 20)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_2[i] = Math.Pow(a_dev[l], 2) + i - 1;
+                        l++;
                     }
                 }
 
-                fraction = 1 / (2 * Math.Pow(intervals, 2) * Math.Pow(gap, 2) * (current - 2 * gap));       //ułamek ze wzoru
+                while (l >= 20 && l < 30)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_3[i] = Math.Pow(a_dev[l],3) - Math.Pow(a_dev[l],2) + 1 + i;
+                        l++;
+                    }
+                }
 
-                a_dev[current] = Math.Sqrt(fraction * (square_sum[current - 1] + Math.Pow(tab[current] - 2 * tab[current - gap] + tab[current - 2 * gap], 2)));   //dewiacja allana dla danej chwili próbkowania 
+                while (l >= 30 && l < 40)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_4[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2)  + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 40 && l < 50)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_5[i] =  Math.Pow(a_dev[l], 2) + 1 + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 50 && l < 60)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_6[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2) ;
+                        l++;
+                    }
+                }
+
+                while (l >= 60 && l < 70)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_7[i] = Math.Pow(a_dev[l], 3) - 1 + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 70 && l < 80)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_8[i] = Math.Pow(a_dev[l], 2) + 1 + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 80 && l < 90)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_9[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2) + 1;
+                        l++;
+                    }
+                }
+
+                while (l >= 90 && l < 100)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_10[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2) + 1 + i;
+                        l++;
+                    }
+                }
             }
+
+            double[] x_ax1 = new double[10];
+            double[] x_ax2 = new double[10];
+            double[] x_ax3 = new double[10];
+            double[] x_ax4 = new double[10];
+            double[] x_ax5 = new double[10];
+            double[] x_ax6 = new double[10];
+            double[] x_ax7 = new double[10];
+            double[] x_ax8 = new double[10];
+            double[] x_ax9 = new double[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax1[i] = 1;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax2[i] = 2;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax3[i] = 3;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax4[i] = 4;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax5[i] = 5;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax6[i] = 6;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax7[i] = 7;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax8[i] = 8;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax9[i] = 9;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_axis[i] = 10;
+            }
+
+            ////////////////////////////////////////////////
+            double[] y_axis = new double[samples_tab.Length];
+
+            for (int j = 0; j < samples_tab.Length; j++)
+            {
+                y_axis[j] = j;
+            }
+
+
+            GnuPlot.Set("pm3d");
+            GnuPlot.Set("autoscale");
+            GnuPlot.Set("contour base");
+            GnuPlot.HoldOn();
+
+            GnuPlot.Set("isosamples 30", "hidden3d");
+            GnuPlot.SPlot(x_ax1, y_axis, tab_1);
+            GnuPlot.SPlot(x_ax2, y_axis, tab_2);
+            GnuPlot.SPlot(x_ax3, y_axis, tab_3);
+            GnuPlot.SPlot(x_ax4, y_axis, tab_4);
+            GnuPlot.SPlot(x_ax5, y_axis, tab_5);
+            GnuPlot.SPlot(x_ax6, y_axis, tab_6);
+            GnuPlot.SPlot(x_ax7, y_axis, tab_7);
+            GnuPlot.SPlot(x_ax8, y_axis, tab_8);
+            GnuPlot.SPlot(x_ax9, y_axis, tab_9);
+            GnuPlot.SPlot(x_axis, y_axis, tab_10);
+
+            GnuPlot.HoldOff();
 
             return 0;
         }
 
-        private static void AllanDeviation()
+
+        private double plot3D_T(int tau_maximum, double[] samples_tab,
+            int sampling_interval, int segments_num)
         {
- 
-
-
-     
-        }
-
-        // calculation
-        private double TimeDeviation(double[] data, int tau_zero)
-        {
-            int sampling_interval = tau_zero;
-            int observation = 2 * tau_zero;
-
-            int j = 0;
-            int sampling_momentum = 0;
-
-            double[] temp_tab;
+            int tau_zero = tau_maximum / 10;
+            //   int sampling_interval = tau_zero;
+            int observe = tau_maximum / segments_num;
 
             switch (choice_2D_plot)
             {
                 case plot_2D.Uniform:
                 {
-                    temp_tab = uniform_table_of_Sample;
+                    samples_tab = uniform_table_of_Sample;
                     break;
                 }
 
-                case plot_2D.Geomtric:
-                {
-                    temp_tab = geometric_table_of_Sample;
-                    break;
-                }
-
-                case plot_2D.Normal:
-                {
-                    temp_tab = normal_table_of_Sample;
-                    break;
-                }
-
-                case plot_2D.Exponential:
-                {
-                    temp_tab = exponential_table_of_Sample;
-                    break;
-                }
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            while (j < observation)
+
+            //////////////////
+            int number_of_elements = samples_tab.Length; //liczba próbek
+            int gap = sampling_interval; //odstęp próbkowania tau
+
+            double[] a_dev = new double[samples_tab.Length]; //tablica do przechowywania wartości dewiacji allana
+            double temp = 0; //do przechowywania sumy kwadratów drugich różnic
+            double[] square_sum = new double[samples_tab.Length];
+            double fraction = 0;
+
+            bool is_active = false; //flaga o aktywności operatora
+
+            int current = 0; //aktualna próbka
+            double sum = 0;
+            double intervals = 2;
+            int k;
+
+            while (current < number_of_elements)
             {
+                gap = 1;
+
+                if (gap == 0)
+                {
+                    gap++;
+                }
+
+                while (current < 2 * gap)
+                {
+                    a_dev[current] = 0;
+                    square_sum[current] = 0;
+                    current++;
+                }
+
+                k = 0;
+
+                while (2 * gap <= current)
+                {
+                    while (k < current - 2 * gap)
+                    {
+                        is_active = true; //spełniony warunek aktywacji operatora
+                        sum = samples_tab[current] - 2 * samples_tab[current - gap] + samples_tab[current - 2 * gap];
+                        temp += Math.Pow(sum, 2);
+                        square_sum[current] = temp;
+
+                        fraction = 1 / (2 * Math.Pow(intervals, 2) * Math.Pow(gap, 2) *
+                                        (current - 2 * gap)); //ułamek ze wzoru
+
+                        a_dev[current] = Math.Sqrt(fraction * (square_sum[current - 1] +
+                                                               Math.Pow(
+                                                                   samples_tab[current] -
+                                                                   2 * samples_tab[current - gap] +
+                                                                   samples_tab[current - 2 * gap], 2)));
+
+                        k++;
+                    }
+
+                    gap++;
+                }
+
+                current++;
             }
+
+            double[] x_axis = new double[10];
+
+            double[] tab_1 = new double[10];
+            double[] tab_2 = new double[10];
+            double[] tab_3 = new double[10];
+            double[] tab_4 = new double[10];
+            double[] tab_5 = new double[10];
+            double[] tab_6 = new double[10];
+            double[] tab_7 = new double[10];
+            double[] tab_8 = new double[10];
+            double[] tab_9 = new double[10];
+            double[] tab_10 = new double[10];
+
+            int l = 0;
+            while (l < a_dev.Length)
+            {
+                while (l < 10)
+                {
+                    tab_1[l] = a_dev[l] + l - 1;
+                    l++;
+                }
+
+                while (l >= 10 && l < 20)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_2[i] = Math.Pow(a_dev[l], 2) + i - 1;
+                        l++;
+                    }
+                }
+
+                while (l >= 20 && l < 30)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_3[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2) + 1 + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 30 && l < 40)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_4[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2) + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 40 && l < 50)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_5[i] = Math.Pow(a_dev[l], 2) + 1 + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 50 && l < 60)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_6[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2);
+                        l++;
+                    }
+                }
+
+                while (l >= 60 && l < 70)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_7[i] = Math.Pow(a_dev[l], 3) - 1 + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 70 && l < 80)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_8[i] = Math.Pow(a_dev[l], 2) + 1 + i;
+                        l++;
+                    }
+                }
+
+                while (l >= 80 && l < 90)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_9[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2) + 1;
+                        l++;
+                    }
+                }
+
+                while (l >= 90 && l < 100)
+                {
+                    for (var i = 0; i < 10; i++)
+                    {
+                        tab_10[i] = Math.Pow(a_dev[l], 3) - Math.Pow(a_dev[l], 2) + 1 + i;
+                        l++;
+                    }
+                }
+            }
+
+            double[] x_ax1 = new double[10];
+            double[] x_ax2 = new double[10];
+            double[] x_ax3 = new double[10];
+            double[] x_ax4 = new double[10];
+            double[] x_ax5 = new double[10];
+            double[] x_ax6 = new double[10];
+            double[] x_ax7 = new double[10];
+            double[] x_ax8 = new double[10];
+            double[] x_ax9 = new double[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax1[i] = 1;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax2[i] = 2;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax3[i] = 3;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax4[i] = 4;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax5[i] = 5;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax6[i] = 6;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax7[i] = 7;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax8[i] = 8;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_ax9[i] = 9;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                x_axis[i] = 10;
+            }
+
+            ////////////////////////////////////////////////
+            double[] y_axis = new double[samples_tab.Length];
+
+            for (int j = 0; j < samples_tab.Length; j++)
+            {
+                y_axis[j] = j;
+            }
+
+
+            GnuPlot.Set("pm3d");
+            GnuPlot.Set("autoscale");
+            GnuPlot.Set("contour base");
+            GnuPlot.HoldOn();
+
+            GnuPlot.Set("isosamples 30", "hidden3d");
+            GnuPlot.SPlot(x_ax1, y_axis, tab_1);
+            GnuPlot.SPlot(x_ax2, y_axis, tab_2);
+            GnuPlot.SPlot(x_ax3, y_axis, tab_3);
+            GnuPlot.SPlot(x_ax4, y_axis, tab_4);
+            GnuPlot.SPlot(x_ax5, y_axis, tab_5);
+            GnuPlot.SPlot(x_ax6, y_axis, tab_6);
+            GnuPlot.SPlot(x_ax7, y_axis, tab_7);
+            GnuPlot.SPlot(x_ax8, y_axis, tab_8);
+            GnuPlot.SPlot(x_ax9, y_axis, tab_9);
+            GnuPlot.SPlot(x_axis, y_axis, tab_10);
+
+            GnuPlot.HoldOff();
 
             return 0;
         }
 
-       // DTDEV
+
+        // DTDEV
         private void button5_Click(object sender, EventArgs e)
         {
-            plot_3D();
+            switch (choice_2D_plot)
+            {
+                case plot_2D.Uniform:
+                    plot3D_T(100, uniform_table_of_Sample, 1, 10);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         // DADEV 
         private void button6_Click(object sender, EventArgs e)
         {
-            plot_3D();
-        }
+            switch (choice_2D_plot)
+            {
+                case plot_2D.Uniform:
+                    plot3D_A(100, uniform_table_of_Sample, 1, 10);
+                    break;
 
-
-
-        private void plot_3D()
-        {
-            double[] z = new double[31 * 31];
-            for (int x = 0; x < 31; x++)
-            for (int y = 0; y < 31; y++)
-                z[31 * x + y] = (x - 15) * (x - 15) + (y - 15) * (y - 15);
-            GnuPlot.Set("pm3d");
-            GnuPlot.Set("autoscale");
-            GnuPlot.Set("contour base");
-            GnuPlot.SPlot(31, z);
-            Thread.Sleep(2000);
-
-            GnuPlot.HoldOn();
-            GnuPlot.Set("view map");
-            GnuPlot.Unset("surface");
-            //GnuPlot.Set("cntrparam levels 10");
-            //GnuPlot.Set("palette gray");
-            //GnuPlot.SPlot(31, z);
-            GnuPlot.HoldOff();
-            Thread.Sleep(2000);
-
-            //GnuPlot.HoldOff();
-           
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         // close
         private void button7_Click(object sender, EventArgs e)
         {
-             GnuPlot.Close();
+            GnuPlot.Close();
+        }
+
+        private void zedGraphControl1_Load_1(object sender, EventArgs e)
+        {
         }
     }
 }
