@@ -1,0 +1,187 @@
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\dewiacja.exe.config
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\dewiacja.pdb
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.csprojAssemblyReference.cache
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.Properties.Resources.resources
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.csproj.GenerateResource.cache
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.pdb
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\ZedGraph.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\ZedGraph.xml
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.csproj.CopyComplete
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\obj\Debug\dewiacja.Form1.resources
+C:\Users\lukas\Desktop\dewiacja allana\synchronization\bin\Debug\splotexampledata.txt
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\splotexampledata.txt
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe.config
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.pdb
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.xml
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csprojAssemblyReference.cache
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Form1.resources
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Properties.Resources.resources
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.GenerateResource.cache
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.CopyComplete
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.pdb
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe.config
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.exe
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.pdb
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\splotexampledata.txt
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.pdb
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.xml
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Form1.resources
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Properties.Resources.resources
+C:\Users\Admin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.GenerateResource.Cache
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\splotexampledata.txt
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe.config
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.pdb
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.xml
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csprojAssemblyReference.cache
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Form1.resources
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Properties.Resources.resources
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.GenerateResource.cache
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.CoreCompileInputs.cache
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.CopyComplete
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.exe
+C:\Users\Marcin\Desktop\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.pdb
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\splotexampledata.txt
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe.config
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\dewiacja.pdb
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\ZedGraph.xml
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csprojAssemblyReference.cache
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Form1.resources
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.Properties.Resources.resources
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.GenerateResource.cache
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.csproj.CopyComplete
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\KASZNIA\Dynamiczne_dewiacje\synchronization\obj\Debug\dewiacja.pdb
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\splotexampledata.txt
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\dewiacja.exe.config
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\dewiacja.pdb
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\ZedGraph.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\ZedGraph.xml
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.csprojAssemblyReference.cache
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.Form1.resources
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.Properties.Resources.resources
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.csproj.GenerateResource.cache
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.csproj.CopyComplete
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.exe
+C:\Users\lukas\Desktop\dewiacje\synchronization\obj\Debug\dewiacja.pdb
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\splotexampledata.txt
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\dewiacja.exe.config
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\dewiacja.exe
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\dewiacja.pdb
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\ZedGraph.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\ZedGraph.xml
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.csprojAssemblyReference.cache
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.Form1.resources
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.Properties.Resources.resources
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.csproj.GenerateResource.cache
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.csproj.CoreCompileInputs.cache
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.csproj.CopyComplete
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.exe
+C:\Users\Marcin\Desktop\final\dewiacje\synchronization\obj\Debug\dewiacja.pdb
